@@ -1,0 +1,21 @@
+Asset_ID,Device_Type,Model,Serial_Number,Employee_Assigned,Department,Location,CPU,RAM_GB,Storage_GB,Warranty_Expiry,Status,OS_Version,Antivirus_Status
+H1000,Mobile,Dinner-209,dfbb8df8-2f44-43a2-8145-6b3516e57774,Tracey Delacruz,HR,West Loriside,5-Core,8,128,2030-12-28,Active,Win-8,Installed
+H1001,Tablet,Dog-503,808221d8-2b20-4bfb-989a-65ed946fe7f4,Anthony Johnson,HR,Port Brenda,8-Core,4,128,2027-04-11,Damaged,Win-9,Not Installed
+H1002,Tablet,Put-324,0ac6668a-e1c1-4416-8f5e-9127b32f9c73,Joshua Andersen,IT,Sherrystad,8-Core,8,512,2026-06-10,Damaged,Win-9,Installed
+H1003,Mobile,Think-780,582aa910-6e4b-402c-a11e-584fb9f6ddec,John Carroll,Marketing,New Haleymouth,3-Core,16,512,2026-03-16,Active,Win-11,Not Installed
+H1004,Mobile,Response-292,ce3fa908-f046-450f-9bb0-32e6a678c0bd,Stephen Russell Jr.,HR,Thompsonport,7-Core,8,1024,2027-07-12,Retired,Win-7,Not Installed
+H1005,Mobile,Any-722,5f858169-eed3-4f10-b9db-bd1efb56b0e0,Michael Fernandez,Marketing,New Catherinefurt,7-Core,16,1024,2029-02-05,Retired,Win-7,Not Installed
+H1006,Tablet,Company-625,ca730ec2-480f-414c-b4c9-54212bc0ae43,Taylor Cooper,HR,Tarastad,7-Core,4,256,2030-05-29,Active,Win-10,Installed
+H1007,Tablet,Include-869,fd265576-2ab3-484f-84ee-bd51b7b2a9f8,Mario Briggs,HR,New Ronaldtown,8-Core,16,512,2026-01-30,Active,Win-9,Not Installed
+H1008,Mobile,Issue-252,31863425-e17c-4e03-b8bb-dbb83d47221f,Marvin Ramos,IT,East Robertville,6-Core,32,128,2029-09-08,Active,Win-11,Installed
+H1009,Tablet,Though-485,6b6ca1c9-2659-4a2b-aeba-75c0fa75250f,Joshua Carpenter,HR,West Bailey,2-Core,4,1024,2026-02-12,Damaged,Win-8,Installed
+H1010,Mobile,Send-523,ff2b1404-fdf9-4d73-a8af-bf9298824aeb,Joseph Perez,HR,East Alexandra,4-Core,16,1024,2026-09-08,Active,Win-11,Not Installed
+H1011,Mobile,Benefit-853,d1570528-9958-47c3-a9d5-d977c9a4db2c,Frances Munoz,HR,Danielport,3-Core,32,128,2027-01-04,Damaged,Win-10,Not Installed
+H1012,Mobile,Rise-328,45fb55c4-40db-405d-8824-ba01bd1d92bd,Tiffany Stewart,HR,New Aaronburgh,3-Core,4,128,2028-08-06,Retired,Win-11,Not Installed
+H1013,Mobile,Professional-186,eba70317-d05b-4f23-867b-61edd1037c62,Justin Chambers,HR,Lake Robinview,2-Core,8,1024,2028-11-22,Damaged,Win-11,Installed
+H1014,Tablet,Common-959,4c139f1e-b9c8-471e-b32e-b7c99aa52956,Alan Jackson,Finance,Alyssabury,6-Core,8,256,2029-09-16,Damaged,Win-11,Installed
+H1015,Tablet,Age-919,73c1db1b-50ee-44eb-97a6-34489d5dd385,Victoria Martinez,Finance,Danielview,2-Core,32,128,2027-12-22,Active,Win-9,Installed
+H1016,Tablet,Important-491,16cf2a3c-8557-4a40-baa3-1f9382b3d2c5,Jonathan Robinson,Finance,South Maryfort,7-Core,32,1024,2026-04-10,Damaged,Win-9,Installed
+H1017,Tablet,Partner-216,8965018e-7dc2-472a-8a85-9733e1330308,Stacy Williams,IT,West Paulborough,2-Core,8,128,2028-07-25,Damaged,Win-7,Not Installed
+H1018,Mobile,Yes-797,1e73f568-adb2-4bcc-bf56-39dddf23506e,Sheila Ramos,Finance,Lake Aaron,4-Core,8,128,2026-11-10,Retired,Win-7,Not Installed
+H1019,Mobile,Feel-957,92953a83-470f-45ec-9810-f4b603de25c7,Mr. Richard Martin,Marketing,Lake Natalie,7-Core,16,256,2030-08-08,Damaged,Win-7,Installed

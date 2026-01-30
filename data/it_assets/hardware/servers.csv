@@ -1,0 +1,21 @@
+Asset_ID,Device_Type,Model,Serial_Number,Employee_Assigned,Department,Location,CPU,RAM_GB,Storage_GB,Warranty_Expiry,Status,OS_Version,Antivirus_Status
+H1000,Server,Approach-301,43799bbc-559a-47e9-84c7-fa5b1c1f3aa9,Keith Lee,Finance,South Eric,5-Core,32,128,2026-02-15,Active,Win-11,Installed
+H1001,Server,Deal-312,28d548f3-f861-4abb-b552-3b83213690d8,Linda Fowler,Marketing,Beverlyborough,4-Core,4,1024,2027-10-14,Damaged,Win-7,Installed
+H1002,Server,Whose-376,2cfec9dc-eb19-45cf-9564-cdfe85a13afc,Amanda Wallace,Finance,Joshuamouth,7-Core,4,1024,2029-01-11,Active,Win-10,Installed
+H1003,Server,Bit-151,b918ea8e-7a97-410d-bc45-3cab6b790b03,Angela Richardson,Finance,Roystad,5-Core,4,512,2030-02-21,Active,Win-8,Installed
+H1004,Server,Left-538,e5dc15ec-1cbc-49c2-9900-2fc250462fb0,Megan Evans,Marketing,South Mark,3-Core,4,512,2029-01-04,Damaged,Win-11,Not Installed
+H1005,Server,Already-873,f317803a-d1b8-41e7-838c-d19b42656b65,Michael Mccann,HR,Gabrielleton,6-Core,4,512,2027-08-02,Active,Win-8,Not Installed
+H1006,Server,Hit-512,7dd2f80e-0db1-48ce-b090-81d728baffe0,Stacy Burke,HR,Lake James,2-Core,4,512,2028-09-09,Active,Win-11,Installed
+H1007,Server,Himself-663,091834ad-4c24-4394-b2d5-aee48e84d268,Kathy Stevenson,Operations,Ellenville,7-Core,16,256,2030-01-12,Damaged,Win-7,Not Installed
+H1008,Server,Door-582,407179b8-db95-4897-bfde-1ca7753aedf8,Samantha Ferguson,Finance,East Davidhaven,3-Core,4,128,2029-03-19,Active,Win-8,Not Installed
+H1009,Server,Receive-263,a2ebeacd-8c80-4ae1-af0b-8b5b5d10ab07,Karen Cantu,Operations,Peterberg,4-Core,8,512,2029-09-20,Retired,Win-7,Installed
+H1010,Server,Box-437,4527ee9c-3815-4156-9ce0-10142885b905,Jesse Hester,HR,Diazville,2-Core,16,1024,2029-09-26,Retired,Win-11,Installed
+H1011,Server,Cost-978,617be5d2-e2bb-4e26-954a-555c6776362a,Paul Hickman,Operations,North Nicoleville,3-Core,32,256,2029-09-29,Damaged,Win-11,Installed
+H1012,Server,Quickly-640,d9803759-aa0d-4e06-b7ff-6f0e8dd23a3f,Wesley Miller,IT,Port Patricia,2-Core,4,256,2030-01-30,Active,Win-10,Installed
+H1013,Server,Husband-468,5fe267f3-bf56-4a73-92a4-99b80feb6160,Travis Mcneil,Finance,Hooperville,5-Core,16,128,2030-07-02,Damaged,Win-9,Not Installed
+H1014,Server,Would-340,49e0e994-5dd4-41df-bb30-6fe79376c452,Aaron Gray,Marketing,Rachaelside,5-Core,32,128,2029-08-04,Active,Win-7,Installed
+H1015,Server,Point-915,94dc9294-9525-4a8d-bed5-53f386c5d06f,Ricky White,Operations,Moratown,6-Core,8,512,2027-05-24,Retired,Win-9,Installed
+H1016,Server,Radio-975,4a06983d-b43b-4403-90c3-523861948707,Craig Warner,IT,New Caseyberg,5-Core,16,256,2027-02-26,Retired,Win-11,Installed
+H1017,Server,Shoulder-647,31e10b18-9a29-404d-aa82-c8a903c5690b,Robert Prince III,HR,Port Melissahaven,4-Core,32,1024,2026-12-23,Active,Win-8,Not Installed
+H1018,Server,Story-941,54f644f4-6c68-4b93-b650-bfee7a596447,Stacy Singleton,HR,Port Shelley,8-Core,16,128,2029-10-24,Retired,Win-10,Not Installed
+H1019,Server,Almost-517,3043b9d9-5ff2-4ca7-a636-15e3b8c3d791,Michael Harris,Finance,North Kari,7-Core,8,1024,2028-02-27,Retired,Win-11,Installed

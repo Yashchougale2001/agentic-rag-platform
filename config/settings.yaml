@@ -1,0 +1,21 @@
+env: "dev"
+log_level: "INFO"
+
+llm:
+  provider_priority:
+    - "groq"
+    - "ollama"
+  max_tokens: 512
+  temperature: 0.1
+
+security:
+  enable_pii_redaction: true
+
+retrieval:
+  top_k: 5
+  min_relevance_score: 0.2  # threshold to avoid hallucinations
+
+monitoring:
+  log_queries: true
+  log_ingestions: true
+  log_file: "logs/app.log"

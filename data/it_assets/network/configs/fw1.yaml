@@ -1,0 +1,19 @@
+Device: Firewall-1
+Interfaces:
+- IP: 192.168.1.1/24
+  Status: up
+  name: eth0
+- IP: 10.0.0.1/24
+  Status: up
+  name: eth1
+Rules:
+- Action: Allow
+  Destination: Any
+  Port: 22
+  Rule_ID: 1
+  Source: Any
+- Action: Allow
+  Destination: Any
+  Port: 80
+  Rule_ID: 2
+  Source: Any

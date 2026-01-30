@@ -1,0 +1,9 @@
+llm:
+  groq:
+    model_name: "llama3-70b-versatile" # adjust to an available Groq model
+  ollama:
+    model_name: "tinyllama" # TinyLLaMA model name in Ollama
+
+embeddings:
+  model_name: "BAAI/bge-small-en-v1.5"
+  device: "cpu"

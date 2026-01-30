@@ -1,0 +1,8 @@
+Device: Router-1
+Routing_Table:
+- Destination: 0.0.0.0/0
+  Gateway: 192.168.1.254
+  Interface: eth0
+- Destination: 10.0.0.0/24
+  Gateway: 0.0.0.0
+  Interface: eth1

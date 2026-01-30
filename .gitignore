@@ -1,0 +1,110 @@
+# =========================
+# Python
+# =========================
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+.Python
+env/
+venv/
+.venv/
+ENV/
+env.bak/
+venv.bak/
+
+# =========================
+# Virtual Environments
+# =========================
+.python-version
+
+# =========================
+# Environment variables / secrets
+# =========================
+.env
+.env.*
+*.env
+
+# =========================
+# Logs
+# =========================
+*.log
+logs/
+
+# =========================
+# FastAPI / Uvicorn
+# =========================
+uvicorn.log
+
+# =========================
+# Jupyter / Experiments
+# =========================
+.ipynb_checkpoints/
+notebooks/.ipynb_checkpoints/
+
+# =========================
+# Vector DB / Embeddings
+# =========================
+chroma/
+chromadb/
+vectorstore/
+embeddings/
+
+# =========================
+# Model / LLM artifacts
+# =========================
+models/
+*.bin
+*.gguf
+*.pt
+*.onnx
+
+# =========================
+# Ollama
+# =========================
+.ollama/
+
+# =========================
+# Cache / Temp
+# =========================
+.cache/
+.cache_embeddings/
+.tmp/
+tmp/
+
+# =========================
+# OS-specific
+# =========================
+.DS_Store
+Thumbs.db
+
+# =========================
+# IDEs / Editors
+# =========================
+.vscode/
+.idea/
+*.swp
+
+# =========================
+# Build / Distribution
+# =========================
+build/
+dist/
+*.egg-info/
+
+# =========================
+# Tests / Coverage
+# =========================
+.coverage
+htmlcov/
+.pytest_cache/
+
+# =========================
+# CLI outputs
+# =========================
+outputs/
+results/
+# Data directories (keep structure, ignore contents)
+data/chroma_db/*
+data/tmp/*

@@ -1,0 +1,21 @@
+Asset_ID,Device_Type,Model,Serial_Number,Employee_Assigned,Department,Location,CPU,RAM_GB,Storage_GB,Warranty_Expiry,Status,OS_Version,Antivirus_Status
+H1000,Laptop,Score-792,c991c84b-8c5b-491f-b902-00940ec4c78e,Paul Flores,Marketing,North Travis,4-Core,32,512,2029-01-17,Active,Win-8,Not Installed
+H1001,Laptop,Trial-628,0c1acc70-adc0-47bd-a574-17a6e5a787cc,Christopher Martinez,IT,North Jared,8-Core,16,1024,2029-12-24,Active,Win-9,Not Installed
+H1002,Laptop,Out-909,8ca9ea6b-d3eb-40f0-9490-a031b027323b,Charles Landry,Marketing,Lake Jenniferchester,2-Core,8,512,2028-05-06,Damaged,Win-10,Not Installed
+H1003,Laptop,Rest-112,384dd805-b60d-40cf-a1bd-a37d4e692331,Patricia Mckay,Operations,Thompsonmouth,3-Core,16,512,2026-12-24,Damaged,Win-11,Not Installed
+H1004,Laptop,Project-493,cb00c18b-f48e-4e39-8f71-5d83dec01e88,John Griffin PhD,IT,Marktown,5-Core,16,256,2030-04-05,Damaged,Win-9,Not Installed
+H1005,Laptop,Clearly-911,1796e6f8-a872-4d4f-8476-06b128e1a1ef,Kimberly Castro,Operations,Lake Christystad,2-Core,8,512,2030-04-22,Damaged,Win-7,Installed
+H1006,Laptop,Defense-442,1a674070-27b2-4483-bef7-1e86b7a72416,Jamie Perez,Marketing,Laurenfort,5-Core,16,256,2030-03-31,Active,Win-11,Not Installed
+H1007,Laptop,Likely-755,db1d2574-6f2a-404d-b7bd-f3400b0b423e,Pamela Chan,IT,West Catherineton,3-Core,8,256,2030-03-09,Damaged,Win-9,Not Installed
+H1008,Laptop,Nature-344,6c2363e9-f465-4ca5-b86a-637fa0744532,Alexandra Anderson,Operations,Elizabethfurt,8-Core,16,512,2030-07-21,Retired,Win-7,Installed
+H1009,Laptop,Pass-463,4c75cd5a-55e3-49fc-833f-d89a508b6a6f,Melissa Smith,HR,New Sean,6-Core,4,128,2026-12-17,Active,Win-7,Not Installed
+H1010,Laptop,Instead-618,5b4080fc-e5aa-470b-aaaf-359c030e5fe2,Larry Richards,HR,Lindseyshire,8-Core,4,128,2027-10-30,Retired,Win-10,Installed
+H1011,Laptop,Born-344,66d3b634-705c-497c-9e4a-0eb1cea0916d,Carmen Long,IT,North Bethany,5-Core,32,512,2026-04-07,Damaged,Win-8,Installed
+H1012,Laptop,Difficult-687,5459ad18-066c-4e9f-bf47-18f0010cb621,Andrew Thompson,HR,South Jonathanburgh,3-Core,32,512,2028-03-11,Retired,Win-9,Not Installed
+H1013,Laptop,Partner-791,ffa29da8-3ab2-4976-811b-fd683ff3a09e,Julie Gould,Marketing,New Kylemouth,5-Core,4,1024,2028-04-02,Active,Win-11,Not Installed
+H1014,Laptop,Listen-453,85fcc524-1326-41c6-a8fa-f25a0d771760,Adrian Torres,IT,Port Carrie,6-Core,4,1024,2027-05-05,Damaged,Win-9,Not Installed
+H1015,Laptop,Loss-660,ae772d7a-d31d-448c-8de9-41c4006ff423,Brendan Moreno,HR,East Kristen,7-Core,32,512,2027-11-12,Damaged,Win-8,Installed
+H1016,Laptop,Base-479,ac09342a-09ab-4ee7-9df5-67016413c158,Tonya Sanchez,Operations,Perezport,5-Core,16,128,2028-04-01,Retired,Win-8,Installed
+H1017,Laptop,Yeah-937,6e05bc54-babc-4fcb-ac92-8ad7dd05462e,Misty Perry,Operations,New Dalemouth,8-Core,8,128,2026-04-23,Damaged,Win-11,Not Installed
+H1018,Laptop,Actually-798,d5763c1c-4128-43be-a0d9-65c2becd3a8d,Lori Bradley,Finance,Josephfort,5-Core,16,1024,2028-03-15,Active,Win-8,Installed
+H1019,Laptop,Allow-450,04277ac2-0071-494c-8969-3f6702f39cec,Steven Mcintosh,Finance,Port Darrenview,4-Core,32,1024,2029-12-03,Active,Win-11,Installed

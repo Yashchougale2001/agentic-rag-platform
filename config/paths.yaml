@@ -1,0 +1,6 @@
+paths:
+  base_dir: "."
+  data_dir: "data"
+  db_dir: "data/chroma_db"
+  logs_dir: "logs"
+  tmp_dir: "data/tmp"
