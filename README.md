@@ -1,10 +1,6 @@
-# IT Agentic RAG Chatbot
+# Agentic RAG Chatbot
 
-Agentic RAG chatbot for IT assets, using:
-
-A modular, agent-driven Retrieval-Augmented Generation (RAG) platform using LangGraph for orchestration, Groq LLM with TinyLLaMA fallback, local BGE-Small embeddings, and ChromaDB.
-
-Supports secure document ingestion (local & remote), PII detection/redaction, and is accessible via both REST API (FastAPI) and CLI.
+Agentic RAG chatbot, using:
 
 - LangGraph agent orchestration
 - Groq LLM (primary) with fallback to TinyLLaMA via Ollama
@@ -17,7 +13,7 @@ It’s designed to be:
 
 Modular (you can swap LLMs/embedders/vector stores later)
 Agentic (LangGraph-based RAG agent)
-IT-assets-focused, with PII detection/redaction
+with PII detection/redaction
 Able to ingest local & remote files (CSV, TXT, MD, YAML)
 Exposed through both CLI and REST API (FastAPI)
 

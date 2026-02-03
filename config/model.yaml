@@ -7,3 +7,39 @@ llm:
 embeddings:
   model_name: "BAAI/bge-small-en-v1.5"
   device: "cpu"
+
+retrieval:
+  use_reranker: false # set to true after installing FlagEmbedding
+  reranker_model: "BAAI/bge-reranker-base"
+
+retrieval:
+  # "dense" = existing behavior (with reranker if enabled)
+  # "hybrid" = dense + BM25 combo
+  # "lexical" = BM25 only
+  mode: "dense"
+
+  # final number of chunks you want to pass to the LLM
+  # top_k: 8
+
+  # filter threshold for similarity-based modes (dense/hybrid)
+  # min_relevance_score: 0.2
+
+  # dense retrieval expansion (how many to pull from Chroma before filtering)
+  dense_k: 12
+
+  # lexical (BM25) expansion
+  lexical_k: 12
+
+  # in hybrid mode: weight for dense vs lexical
+  # 1.0 = dense only, 0.0 = lexical only
+  hybrid_dense_weight: 0.6
+
+  # reranker options (from previous step)
+  use_reranker: false          # set true once FlagEmbedding is installed
+  reranker_model: "BAAI/bge-reranker-base"
+
+   # query rewriting (conversation-aware retrieval)
+  query_rewriting:
+    # enabled: false            # set true to activate rewriting
+    enabled: true            # set false to activate rewriting
+    max_history_messages: 6   # how many past messages to use

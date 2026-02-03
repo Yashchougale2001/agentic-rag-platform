@@ -15,3 +15,6 @@ openpyxl
 groq
 langgraph
 python-multipart
+# added for making use of FlagEmbedding and RankBM25
+FlagEmbedding
+rank_bm25
