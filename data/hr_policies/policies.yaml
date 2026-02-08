@@ -1,0 +1,21 @@
+hr_policies:
+  categories:
+    attendance_policy:
+      file: attendance_policy/attendance_policy.csv
+      total_rules: 7
+    code_of_conduct:
+      file: code_of_conduct/code_of_conduct.csv
+      total_rules: 6
+    leave_policy:
+      file: leave_policy/leave_policy.csv
+      total_rules: 8
+    payroll_policy:
+      file: payroll_policy/payroll_policy.csv
+      total_rules: 5
+    reimbursement_policy:
+      file: reimbursement_policy/reimbursement_policy.csv
+      total_rules: 5
+    travel_policy:
+      file: travel_policy/travel_policy.csv
+      total_rules: 5
+  version: '1.0'

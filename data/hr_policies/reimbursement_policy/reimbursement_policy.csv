@@ -1,0 +1,6 @@
+policy_id,category,rule_name,description
+RB001,Reimbursement,Travel Reimbursement,Local travel reimbursed up to ₹5000/month.
+RB002,Reimbursement,Food Reimbursement,Meals reimbursed only during official travel.
+RB003,Reimbursement,Medical Reimbursement,Up to ₹25000/year for medical bills.
+RB004,Reimbursement,Equipment,Work equipment purchases require pre-approval.
+RB005,Reimbursement,Claim Submission,Claims must be submitted within 30 days.

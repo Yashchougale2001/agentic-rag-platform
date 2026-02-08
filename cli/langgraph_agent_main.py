@@ -1,33 +1,49 @@
-# cli/langgraph_agent_main.py
-import logging
-
-from src.utils.config_loader import ensure_directories
-from src.agent.graph_agent import build_it_graph_agent
-
-logging.basicConfig(level=logging.INFO)
+from src.agent.graph_agent import build_graph_agent
 
 
 def main():
-    ensure_directories()
-    # compile() returns a runnable graph; we don't need the CompiledGraph type
-    graph = build_it_graph_agent().compile()
+    print("General Chatbot (LangGraph Agent)")
+    print("Type 'quit' to exit, 'debug' for step-by-step mode\n")
 
-    print("IT RAG LangGraph Agent (type 'exit' to quit)")
+    agent = build_graph_agent()
+    debug_mode = False
+
     while True:
+        user_input = input("You: ").strip()
+
+        if not user_input:
+            continue
+
+        if user_input.lower() == "quit":
+            print("Goodbye!")
+            break
+
+        if user_input.lower() == "debug":
+            debug_mode = not debug_mode
+            print(f"Debug mode: {'ON' if debug_mode else 'OFF'}")
+            continue
+
         try:
-            question = input("\nYou: ").strip()
-        except (EOFError, KeyboardInterrupt):
-            print("\nExiting.")
-            break
+            if debug_mode:
+                print("\n--- Agent Execution Steps ---")
+                for step in agent.stream(user_input):
+                    node_name = list(step.keys())[0]
+                    print(f"  → {node_name}")
+                result = agent.invoke(user_input)
+            else:
+                result = agent.invoke(user_input)
 
-        if question.lower() in {"exit", "quit"}:
-            print("Goodbye.")
-            break
+            print(f"\nAssistant: {result['answer']}")
 
-        # Call the compiled graph
-        result = graph.invoke({"question": question})
-        answer = result.get("answer", "")
-        print("\nAssistant:", answer)
+            if debug_mode:
+                print(f"\n[Steps: {' → '.join(result['steps'])}]")
+                print(f"[Intent: {result.get('intent', 'N/A')}]")
+                print(f"[Retrieval Attempts: {result.get('retrieval_attempts', 0)}]")
+
+            print()
+
+        except Exception as e:
+            print(f"Error: {e}\n")
 
 
 if __name__ == "__main__":

@@ -1,6 +1,6 @@
 llm:
   groq:
-    model_name: "llama3-70b-versatile" # adjust to an available Groq model
+    model_name: "llama-3.3-70b-versatile" # adjust to an available Groq model
   ollama:
     model_name: "tinyllama" # TinyLLaMA model name in Ollama
 

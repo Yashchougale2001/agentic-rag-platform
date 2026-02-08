@@ -1,0 +1,9 @@
+policy_id,category,rule_name,description
+LP001,Leave Policy,Annual Leave,Employees receive 18 paid annual leave days per year.
+LP002,Leave Policy,Sick Leave,12 paid sick leave days with medical certificate for 2+ days.
+LP003,Leave Policy,Casual Leave,8 casual leaves per year non-carry-forward.
+LP004,Leave Policy,Maternity Leave,26 weeks paid maternity leave for female employees.
+LP005,Leave Policy,Paternity Leave,10 days paid paternity leave for male employees.
+LP006,Leave Policy,Emergency Leave,5 days unpaid emergency leave allowed with approval.
+LP007,Leave Policy,Leave Carry Forward,Annual leave carry-forward limit up to 10 days.
+LP008,Leave Policy,Half-day Leave,Allowed twice per month with manager approval.

@@ -1,0 +1,31 @@
+{
+    "dataset": "HR Policies Complete Dataset",
+    "version": "1.0.0",
+    "last_updated": "2026-01-27",
+    "categories": [
+        {
+            "name": "Leave Policy",
+            "path": "leave_policy/leave_policy.csv"
+        },
+        {
+            "name": "Attendance Policy",
+            "path": "attendance_policy/attendance_policy.csv"
+        },
+        {
+            "name": "Code of Conduct",
+            "path": "code_of_conduct/code_of_conduct.csv"
+        },
+        {
+            "name": "Reimbursement Policy",
+            "path": "reimbursement_policy/reimbursement_policy.csv"
+        },
+        {
+            "name": "Payroll Policy",
+            "path": "payroll_policy/payroll_policy.csv"
+        },
+        {
+            "name": "Travel Policy",
+            "path": "travel_policy/travel_policy.csv"
+        }
+    ]
+}

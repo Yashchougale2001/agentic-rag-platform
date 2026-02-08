@@ -1,0 +1,8 @@
+policy_id,category,rule_name,description
+AT001,Attendance,Work Hours,Standard work hours are 9 AM – 6 PM with 1-hour break.
+AT002,Attendance,Remote Work,Employees can take 2 remote workdays per week with approval.
+AT003,Attendance,Late Mark,Arrival after 9:15 AM counts as late; 3 lates = 0.5 leave deduction.
+AT004,Attendance,Early Exit,Leaving before 5 PM requires manager approval.
+AT005,Attendance,Biometric,Biometric attendance mandatory for all employees.
+AT006,Attendance,Overtime,Overtime requires written approval; compensatory leave applied.
+AT007,Attendance,Shift Timing,Shift employees must follow scheduled timings.

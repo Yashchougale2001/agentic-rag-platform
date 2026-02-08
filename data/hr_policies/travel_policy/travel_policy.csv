@@ -1,0 +1,6 @@
+policy_id,category,rule_name,description
+TV001,Travel,Domestic Travel,Requires manager approval plus travel desk booking.
+TV002,Travel,International Travel,Requires Director approval at least 30 days prior.
+TV003,Travel,Accommodation,Hotel bookings follow company-approved rate limits.
+TV004,Travel,Daily Allowance,Daily allowance based on city tier.
+TV005,Travel,Travel Insurance,Mandatory for all international business trips.

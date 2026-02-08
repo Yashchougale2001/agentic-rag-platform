@@ -2,7 +2,7 @@ from typing import Dict, List
 from src.retrieval.retriever import Retriever
 
 
-class RAGTool:
+class BasicRetrievalTool:
     """
     Tool that performs retrieval given a user query.
     """

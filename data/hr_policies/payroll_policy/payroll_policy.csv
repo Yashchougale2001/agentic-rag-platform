@@ -1,0 +1,6 @@
+policy_id,category,rule_name,description
+PY001,Payroll,Salary Cycle,Salaries processed on 30th every month.
+PY002,Payroll,Salary Breakup,"Basic, HRA, Allowances, PF included."
+PY003,Payroll,Provident Fund,Employer contributes 12% of basic salary to PF.
+PY004,Payroll,Tax Deduction,TDS deducted as per government norms.
+PY005,Payroll,Bonus,Annual bonus based on performance review.
