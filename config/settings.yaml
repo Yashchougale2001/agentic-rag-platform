@@ -1,5 +1,7 @@
 env: "dev"
-log_level: "INFO"
+logging:
+  level: INFO
+  file: logs/app.log
 
 llm:
   provider_priority:
@@ -13,7 +15,7 @@ security:
 
 retrieval:
   top_k: 5
-  min_relevance_score: 0.2  # threshold to avoid hallucinations
+  min_relevance_score: 0.2 # threshold to avoid hallucinations
 
 monitoring:
   log_queries: true

@@ -1,7 +1,7 @@
 from typing import Dict, Any, List, Optional
 from dataclasses import dataclass, field
 
-from src.agent.tools.rag_tool import RAGTool
+from src.agent.tools.knowledge_base_tool import RAGTool
 from src.llm.generator import LLMGenerator
 from src.processing.query_rewriter import QueryRewriter
 from src.utils.config_loader import load_model_config
