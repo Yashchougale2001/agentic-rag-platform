@@ -1,7 +1,3 @@
-Here’s an updated `README.md` that reflects all the major changes we’ve made: new tools (memory, planner, RBAC, feedback), the updated LangGraph agent, KB + local directory search, and the new `/query` shape (with `user_id` and `role`).
-
-You can replace your current README with this.
-
 ````markdown
 # Agentic RAG Chatbot
 
@@ -125,6 +121,10 @@ your_project/
 ```
 
 ---
+
+## Mini Architecture Flow Diagram
+
+User → Planner → Tool (KB/Local) → RBAC Filter → LLM → Memory Save → Response
 
 ## Features
 
@@ -442,6 +442,7 @@ python -m cli.ingest --path https://example.com/hr_policy.pdf --dataset hr_polic
 - **RBAC**: To fully leverage RBAC, ensure your ingested documents carry useful `metadata`, such as:
   - `visibility`: `"public" | "hr" | "admin" | "private"`
   - `owner_user_id`: for employee-specific documents.
+    RBAC filtering occurs after retrieval and before answer generation, ensuring the LLM never sees unauthorized content.
 - **Memory**: Conversation history and user profiles are stored under `data/memory/` and used to provide more contextual, personalized answers.
 - **Planner**: The LLM-based planner can be tuned (prompt editing) to match your operational preferences for when to use KB vs local search vs direct answering.
 
