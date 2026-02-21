@@ -50,6 +50,10 @@ chroma/
 chromadb/
 vectorstore/
 embeddings/
+memory/
+
+# Ignore memory conversation files
+data/memory/conversations/
 
 # =========================
 # Model / LLM artifacts

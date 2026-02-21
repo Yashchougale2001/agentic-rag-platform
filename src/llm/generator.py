@@ -61,20 +61,20 @@ class LLMGenerator:
         )
         return resp.choices[0].message.content
 
-    def _call_ollama(
-        self, system_prompt: str, messages: List[Dict[str, str]]
-    ) -> str:
-        client = self._get_ollama_client()
-        model_name = client.model_name
+    # def _call_ollama(
+    #     self, system_prompt: str, messages: List[Dict[str, str]]
+    # ) -> str:
+    #     client = self._get_ollama_client()
+    #     model_name = client.model_name
 
-        logger.info("Using Ollama LLM (TinyLLaMA) with model %s", model_name)
-        self.last_provider_used = ("ollama", model_name)
-        return client.generate(
-            system_prompt=system_prompt,
-            messages=messages,
-            max_tokens=self.max_tokens,
-            temperature=self.temperature,
-        )
+    #     logger.info("Using Ollama LLM (TinyLLaMA) with model %s", model_name)
+    #     self.last_provider_used = ("ollama", model_name)
+    #     return client.generate(
+    #         system_prompt=system_prompt,
+    #         messages=messages,
+    #         max_tokens=self.max_tokens,
+    #         temperature=self.temperature,
+    #     )
 
     def generate_text(
         self,
@@ -102,14 +102,14 @@ class LLMGenerator:
                     finally:
                         self.max_tokens, self.temperature = old_max, old_temp
 
-                elif provider == "ollama":
-                    # Ollama is local; assume always available once client is created
-                    old_max, old_temp = self.max_tokens, self.temperature
-                    self.max_tokens, self.temperature = max_tokens, temperature
-                    try:
-                        return self._call_ollama(system_prompt, messages)
-                    finally:
-                        self.max_tokens, self.temperature = old_max, old_temp
+                # elif provider == "ollama":
+                #     # Ollama is local; assume always available once client is created
+                #     old_max, old_temp = self.max_tokens, self.temperature
+                #     self.max_tokens, self.temperature = max_tokens, temperature
+                #     try:
+                #         return self._call_ollama(system_prompt, messages)
+                #     finally:
+                #         self.max_tokens, self.temperature = old_max, old_temp
 
             except Exception as e:
                 logger.warning("LLM provider %s failed in generate_text: %s", provider, e)
@@ -162,8 +162,8 @@ class LLMGenerator:
                     if not self._get_groq_client():
                         continue
                     return self._call_groq(system_prompt, messages)
-                elif provider == "ollama":
-                    return self._call_ollama(system_prompt, messages)
+                # elif provider == "ollama":
+                #     return self._call_ollama(system_prompt, messages)
             except Exception as e:
                 logger.warning("LLM provider %s failed: %s", provider, e)
                 last_error = e
