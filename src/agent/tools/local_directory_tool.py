@@ -63,6 +63,8 @@ class LocalDirectoryTool:
                 "source": "/path/to/file",
                 "source_type": "local_file",
                 "score": <float>,
+                "visibility": "public" | "hr" | "admin" | "private",
+                "dataset": "hr_data" | "hr_policies" | "it_assets" | ...
             }
           },
           ...
@@ -113,14 +115,47 @@ class LocalDirectoryTool:
 
             snippet = self._make_snippet(text, terms, max_chars=self.max_chars)
 
+            path_str = str(file_path).replace("\\", "/")
+
+            # Infer dataset + visibility from path
+            dataset = None
+            visibility = "public"
+
+            if "/hr_data/" in path_str:
+                dataset = "hr_data"
+                # local copies of hr_data are likely HR-internal
+                visibility = "hr"
+            elif "/hr_local/" in path_str:
+                dataset = "hr_local"
+                visibility = "public"
+            elif "/hr_policies/" in path_str:
+                dataset = "hr_policies"
+                visibility = "public"
+            elif "/it_assets/network/" in path_str:
+                dataset = "it_assets"
+                visibility = "admin"
+            elif "/it_assets/users/" in path_str:
+                dataset = "it_assets"
+                visibility = "private"
+            elif "/it_assets/" in path_str:
+                dataset = "it_assets"
+                visibility = "hr"
+            else:
+                dataset = "local_files"
+                visibility = "public"
+
+            meta: Dict[str, Any] = {
+                "source": path_str,
+                "source_type": "local_file",
+                "score": float(score),
+                "visibility": visibility,
+                "dataset": dataset,
+            }
+
             results.append(
                 {
                     "text": snippet,
-                    "metadata": {
-                        "source": str(file_path),
-                        "source_type": "local_file",
-                        "score": float(score),
-                    },
+                    "metadata": meta,
                 }
             )
 
