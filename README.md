@@ -1,41 +1,48 @@
-Here is an updated, cleaned-up `README.md` that matches your current codebase and removes the outdated PII references, corrects paths, and formats everything properly.
+Here’s an updated `README.md` that reflects all the major changes we’ve made: new tools (memory, planner, RBAC, feedback), the updated LangGraph agent, KB + local directory search, and the new `/query` shape (with `user_id` and `role`).
+
+You can replace your current README with this.
 
 ````markdown
 # Agentic RAG Chatbot
 
-An **agentic RAG** (Retrieval-Augmented Generation) chatbot for **HR data & policies**, built with:
+An **agentic RAG** (Retrieval-Augmented Generation) chatbot for **HR & IT asset data**, built with:
 
-- **LangGraph** for agent orchestration
+- **LangGraph** for multi-step agent orchestration
 - **Groq LLM** (primary, via `GROQ_API_KEY`) with fallback to **TinyLLaMA** via **Ollama**
 - **BAAI/bge-small-en-v1.5** embeddings (local, via `sentence-transformers`)
 - **ChromaDB** as a local persistent vector store
-- Flexible ingestion of local and remote datasets (CSV, TXT, MD, PDF, DOCX, YAML)
+- **Agentic tools** for:
+  - Knowledge-base retrieval (Chroma)
+  - Local directory search (filesystem)
+  - Conversation + user memory
+  - RBAC / permission filtering
+  - Feedback logging for evaluation
 - REST API (FastAPI) + CLI entrypoints
 
-> Note: PII detection/redaction is **disabled** in the current version. All ingested text is stored and embedded as-is.
+> Note: PII detection/redaction components exist but are **not wired into the default ingestion pipeline**. All ingested text is stored and embedded as-is unless you explicitly enable PII processing.
 
-It’s designed to be:
+The chatbot is designed to be:
 
-- Modular (you can swap LLMs/embedders/vector stores later)
-- Agentic (LangGraph-based RAG agent)
-- HR-policy-focused
+- Modular (swappable LLMs, embedders, and vector stores)
+- Agentic (LangGraph-based planner + tools)
+- Focused on HR policies and IT assets
 - Able to ingest local & remote files
-- Exposed through both CLI and REST API (FastAPI)
+- Exposed via both CLI and REST API
 
 ---
 
 ## Project Structure
 
 ```text
-hr_chatbot/
+your_project/
 │
 ├── config/
 │   ├── __init__.py
 │   ├── settings.yaml       # env, LLM provider priority, logging, retrieval params
-│   ├── model.yaml          # LLM & embedding model names
+│   ├── model.yaml          # LLM & embedding model names + retrieval config
 │   └── paths.yaml          # data, db, logs, tmp directories
 │
-├── data/                   # your HR data (e.g., data/hr_policies, data/hr_data)
+├── data/                   # your HR/IT data (e.g., data/hr_policies, data/it_assets, data/hr_local)
 │
 ├── src/
 │   ├── __init__.py
@@ -65,13 +72,13 @@ hr_chatbot/
 │   │   ├── __init__.py
 │   │   ├── chroma_client.py
 │   │   ├── bm25_store.py
-│   │   ├── hybrid_retrival.py
+│   │   ├── hybrid_retrieval.py
 │   │   └── vector_store.py
 │   │
-│   ├── retrieval/               # Retriever
+│   ├── retrieval/               # High-level retriever(s)
 │   │   ├── __init__.py
 │   │   ├── reranker.py
-│   │   └── retriever.py
+│   │   └── retriever.py         # dense / hybrid / lexical retrieval
 │   │
 │   ├── llm/
 │   │   ├── __init__.py
@@ -81,14 +88,15 @@ hr_chatbot/
 │   │
 │   ├── agent/
 │   │   ├── __init__.py
-│   │   ├── agent_core.py        # HRRAGAgentCore (retrieve + generate)
-│   │   ├── graph_agent.py       # LangGraph agent wiring
-│   │   └── agent_tools/
+│   │   ├── agent_core.py        # (legacy core RAG agent, optional)
+│   │   ├── graph_agent.py       # LangGraph agent wiring (advanced agent)
+│   │   └── tools/
 │   │       ├── __init__.py
-│   │       ├── rag_tool.py
-│   │       ├── email_tool.py
-│   │       ├── local_search_tool.py
-│   │       └── analyze_asset.py # placeholder for future HR automation
+│   │       ├── knowledge_base_tool.py   # wraps Retriever (Chroma/BM25/hybrid)
+│   │       ├── local_directory_tool.py  # keyword search in local filesystem
+│   │       ├── memory_tool.py           # conversation + user profile memory
+│   │       ├── rbac_tool.py             # RBAC / permission filtering
+│   │       └── feedback_tool.py         # feedback logging for evaluation
 │   │
 │   └── utils/
 │       ├── __init__.py
@@ -98,48 +106,74 @@ hr_chatbot/
 │
 ├── cli/
 │   ├── __init__.py
-│   ├── main.py                  # CLI chatbot (core agent)
+│   ├── main.py                  # simple CLI chatbot (legacy/core agent)
 │   ├── ingest.py                # CLI ingestion (file/folder/url)
-│   └── langgraph_agent_main.py  # CLI using LangGraph agent
+│   └── langgraph_agent_main.py  # CLI using LangGraph agent (with memory + RBAC)
 │
-├── api/                         # FastAPI app
+├── api/
 │   ├── __init__.py
-│   ├── main.py                  # app entrypoint
+│   ├── main.py                  # FastAPI app entrypoint
 │   └── routes/
 │       ├── __init__.py
-│       ├── query.py             # /query endpoint
-│       └── ingest.py            # /ingest/file, /ingest/url, /ingest/folder
+│       ├── query.py             # /query endpoint (LangGraph agent)
+│       ├── ingest.py            # /ingest/file, /ingest/url, /ingest/folder
+│       └── feedback.py          # /feedback endpoint (optional)
 │
 ├── requirements.txt
 ├── README.md
 └── .gitignore
 ```
-````
 
 ---
 
 ## Features
 
-### RAG-based HR Q&A
+### 1. Advanced Agentic RAG
 
-- Answers only from ingested HR datasets (no outside knowledge).
-- Uses BGE-Small (`BAAI/bge-small-en-v1.5`) embeddings + ChromaDB for retrieval.
-- Documents are chunked for efficient and accurate retrieval.
+The LangGraph agent (in `src/agent/graph_agent.py`) orchestrates multiple tools:
 
-### LLM Orchestration
+- **Knowledge base retrieval** (Chroma/BGE, with optional BM25/hybrid):
+  - Via `Retriever` (`src/retrieval/retriever.py`) wrapped by `KnowledgeBaseTool`.
+- **Local directory search**:
+  - Via `LocalDirectoryTool`, scanning a configurable folder (default: `data/hr_local`).
+- **LLM-based planner**:
+  - Decides between:
+    - `KB_SEARCH` – query the vector store
+    - `LOCAL_SEARCH` – search the local filesystem
+    - `ANSWER` – answer from existing context + memory
+- **RBAC enforcement**:
+  - `RBACFilterTool` filters docs based on:
+    - `role` (`admin`, `hr`, `employee`)
+    - document `metadata.visibility` and `metadata.owner_user_id`
+- **Conversation + user memory**:
+  - `MemoryTool` stores:
+    - recent Q&A turns per `user_id`
+    - a simple user profile per `user_id`
 
-- `LLMGenerator` chooses:
-  - **Groq** first (if `GROQ_API_KEY` is available and Groq client initializes),
-  - Then **TinyLLaMA via Ollama** as a fallback.
-- System prompt tuned for **HR policies**.
-- Final answers are **plain text only**:
-  - No citations
-  - No `[1]`/`[2]` markers
-  - No `[source: ...]` or file paths exposed
+### 2. RAG-based HR/IT Q&A
 
-### Flexible Ingestion
+- Answers are grounded in **ingested HR/IT datasets** (no arbitrary outside knowledge).
+- Uses **BGE-Small** (`BAAI/bge-small-en-v1.5`) embeddings + **ChromaDB**.
+- Supports dense, lexical, or hybrid retrieval via `retriever.py`.
+- Recency and reranking (optional) can be configured via `model.yaml`.
 
-Local & remote ingestion of:
+### 3. Orchestrated LLM Usage
+
+`LLMGenerator` (`src/llm/generator.py`):
+
+- Chooses provider by priority:
+  - **Groq** (`GROQ_API_KEY` required); default model `llama-3.3-70b-versatile`.
+  - Fallback to local **TinyLLaMA** via **Ollama**.
+- Used in:
+  - Query rewriting (if enabled)
+  - The main RAG answer generation
+  - The planner node (to choose next action)
+
+The system prompts are tuned for **IT/HR assets and policy**-style questions.
+
+### 4. Flexible Ingestion
+
+Ingestion pipeline (`src/ingestion/ingest_pipeline.py`) supports:
 
 - Files:
   - CSV
@@ -151,31 +185,89 @@ Local & remote ingestion of:
   - PDF
   - DOC/DOCX
 - Folders:
-  - Recursively ingest all supported files in a directory
+  - Recursively ingest all supported files in a directory.
 - URLs:
-  - Download remote file then run full ingestion pipeline
+  - Download and process remote files.
 
-### APIs & Tools
+Documents are chunked and embedded, then stored in ChromaDB.
+
+### 5. APIs & Tools
 
 **REST API (FastAPI)**:
 
-- `POST /query` – ask questions
-- `POST /ingest/file` – upload a file
-- `POST /ingest/url` – ingest from URL
-- `POST /ingest/folder` – ingest all files in a local folder (server-side path)
+- `POST /query` – ask questions via LangGraph agent  
+  Request body:
+
+  ```json
+  {
+    "question": "What is the laptop replacement policy?",
+    "user_id": "emp_123",
+    "role": "employee"
+  }
+  ```
+
+  Response shape:
+
+  ```json
+  {
+    "answer": "Employees are eligible for a laptop replacement every 3 years...",
+    "steps": [
+      "load_memory",
+      "plan:KB_SEARCH",
+      "kb_retrieve",
+      "plan:ANSWER",
+      "generate_answer",
+      "save_memory"
+    ],
+    "context_sources": ["data/hr_policies/laptop_policy.md"]
+  }
+  ```
+
+- `POST /ingest/file` – upload a file to ingest.
+- `POST /ingest/url` – ingest from a remote URL.
+- `POST /ingest/folder` – ingest all files in a local folder (server-side path).
+- `POST /feedback` (optional) – submit user feedback:
+
+  ```json
+  {
+    "user_id": "emp_123",
+    "role": "employee",
+    "question": "What is the laptop replacement policy?",
+    "answer": "...",
+    "rating": 1,
+    "comment": "Correct and clear.",
+    "context_sources": ["data/hr_policies/laptop_policy.md"]
+  }
+  ```
+
+  Feedback entries are appended to `logs/feedback.jsonl` for offline evaluation.
 
 **CLI**:
 
-- `cli/main.py` – simple HR chatbot (core agent)
-- `cli/langgraph_agent_main.py` – chatbot using LangGraph agent
-- `cli/ingest.py` – ingest file/folder/URL from the command line
+- `cli/main.py` – simple core chatbot (using legacy agent, optional).
+- `cli/langgraph_agent_main.py` – CLI using the **LangGraph agent** (planner + memory + RBAC).
+- `cli/ingest.py` – ingest file/folder/URL from the command line.
 
-### Logging
+The LangGraph CLI mirrors the API:
 
-Centralized logging configuration via `src/utils/logging_config.py`:
+- It uses the same compiled graph.
+- It asks for (or takes as args) `user_id` and `role`.
+- It returns and displays `answer`, `steps`, and `context_sources`.
 
-- Logs to console
-- And to a file under `logs/` (default: `logs/app.log`, configurable in `config/settings.yaml`)
+### 6. Logging
+
+Centralized logging via `src/utils/logging_config.py`:
+
+- Logs to console.
+- Logs to a file under `logs/` (default: `logs/app.log`, configurable in `config/settings.yaml`):
+
+  ```yaml
+  logging:
+    level: INFO
+    file: logs/app.log
+  ```
+
+Directories for logs, DB, and temp files come from `config/paths.yaml`.
 
 ---
 
@@ -183,7 +275,7 @@ Centralized logging configuration via `src/utils/logging_config.py`:
 
 ```bash
 git clone <this-repo>
-cd hr_chatbot
+cd your_project
 python -m venv .venv
 ```
 
@@ -207,15 +299,17 @@ Install dependencies:
 pip install -r requirements.txt
 ```
 
-### Environment variables
+---
 
-Ensure you have:
+## Configuration
+
+### Environment variables
 
 #### Groq (optional but recommended)
 
-If you want to use Groq as the primary LLM:
+To use Groq as the primary LLM:
 
-- Install `groq` (already included in `requirements.txt`).
+- Install `groq` (should already be in `requirements.txt`).
 - Set `GROQ_API_KEY`:
 
 **PowerShell:**
@@ -239,6 +333,48 @@ set GROQ_API_KEY=sk_your_real_key_here
 ollama pull tinyllama
 ```
 
+### Paths and logging
+
+`config/paths.yaml`:
+
+```yaml
+paths:
+  base_dir: "."
+  data_dir: "data"
+  db_dir: "data/chroma_db"
+  logs_dir: "logs"
+  tmp_dir: "data/tmp"
+```
+
+`config/settings.yaml` (example):
+
+```yaml
+env: "dev"
+
+logging:
+  level: INFO
+  file: logs/app.log
+
+llm:
+  provider_priority:
+    - "groq"
+    - "ollama"
+  max_tokens: 512
+  temperature: 0.1
+
+retrieval:
+  top_k: 5
+  min_relevance_score: 0.2
+
+security:
+  enable_pii_redaction: false # PII detection not active by default
+
+monitoring:
+  log_queries: true
+  log_ingestions: true
+  log_file: "logs/app.log"
+```
+
 ---
 
 ## Running the API
@@ -251,10 +387,11 @@ uvicorn api.main:app --reload --port 8000
 
 Key endpoints:
 
-- **Query endpoint:** `POST /query`
-- **Ingest file:** `POST /ingest/file`
-- **Ingest URL:** `POST /ingest/url`
-- **Ingest folder:** `POST /ingest/folder`
+- `POST /query` – main chat endpoint (LangGraph agent).
+- `POST /ingest/file` – ingest a single file.
+- `POST /ingest/url` – ingest from URL.
+- `POST /ingest/folder` – ingest all supported files in a folder.
+- `POST /feedback` – submit feedback on answers.
 
 Interactive docs:
 
@@ -264,25 +401,21 @@ Interactive docs:
 
 ## CLI Usage
 
-### Chatbot (core agent)
-
-```bash
-python -m cli.main
-```
-
-Example:
-
-```text
-HR RAG Chatbot (type 'exit' to quit)
-
-You: What is the annual leave policy?
-Assistant: ...
-```
-
-### Chatbot (LangGraph agent)
+### LangGraph Agent CLI (recommended)
 
 ```bash
 python -m cli.langgraph_agent_main
+```
+
+You’ll be prompted for a role if not specified and a default `user_id` (`cli_user`) will be used.
+
+Single-query example:
+
+```bash
+python -m cli.langgraph_agent_main \
+  --query "What is the laptop replacement policy?" \
+  --user-id emp_123 \
+  --role employee
 ```
 
 ### Ingestion (CLI)
@@ -291,11 +424,11 @@ python -m cli.langgraph_agent_main
 # Ingest a single file into hr_policies dataset
 python -m cli.ingest --path path/to/hr_policies.pdf --dataset hr_policies
 
-# Ingest entire folder (recursively)
+# Ingest an entire folder (recursively)
 python -m cli.ingest --path data/hr_policies --dataset hr_policies
 
-# Another dataset (e.g., HR data)
-python -m cli.ingest --path data/hr_data --dataset hr_data
+# Another dataset (e.g., IT assets)
+python -m cli.ingest --path data/it_assets --dataset it_assets
 
 # Ingest from a URL
 python -m cli.ingest --path https://example.com/hr_policy.pdf --dataset hr_policies
@@ -305,12 +438,12 @@ python -m cli.ingest --path https://example.com/hr_policy.pdf --dataset hr_polic
 
 ## Notes
 
-- PII detection/redaction is **not active** in this version. If you need PII protection, you can re-enable usage of `pii_detector.py` and `pii_redactor.py` in the ingestion pipeline.
-- The chatbot answers **only** from the ingested HR knowledge (CSV/XLSX/JSON/policy docs) and is instructed to say it does not know if the answer is not in the context.
-- Answers are returned as **plain natural language** with no citations or internal document identifiers.
+- **PII**: Detection/redaction modules exist (`pii_detector.py`, `pii_redactor.py`) but are not active by default in the ingestion pipeline.
+- **RBAC**: To fully leverage RBAC, ensure your ingested documents carry useful `metadata`, such as:
+  - `visibility`: `"public" | "hr" | "admin" | "private"`
+  - `owner_user_id`: for employee-specific documents.
+- **Memory**: Conversation history and user profiles are stored under `data/memory/` and used to provide more contextual, personalized answers.
+- **Planner**: The LLM-based planner can be tuned (prompt editing) to match your operational preferences for when to use KB vs local search vs direct answering.
 
-You can further customize retrieval, prompts, and metadata to better match your HR data model (e.g., policy type, region, department, effective dates).
-
-```
-
-```
+You can further customize retrieval, prompts, tools, and metadata to better match your HR/IT data model and internal policies.
+````
