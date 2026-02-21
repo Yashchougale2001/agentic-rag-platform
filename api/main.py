@@ -4,9 +4,13 @@ from __future__ import annotations
 
 import logging
 from fastapi import FastAPI
+from dotenv import load_dotenv  # NEW
 
 from src.utils.logging_config import setup_logging
 from src.utils.config_loader import ensure_directories
+
+# Load .env first
+load_dotenv()
 
 # Configure logging BEFORE importing routers
 setup_logging()
