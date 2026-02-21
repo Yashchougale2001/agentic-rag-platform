@@ -404,7 +404,7 @@ Interactive docs:
 ### LangGraph Agent CLI (recommended)
 
 ```bash
-python -m cli.langgraph_agent_main
+python -m cli.main
 ```
 
 You’ll be prompted for a role if not specified and a default `user_id` (`cli_user`) will be used.
