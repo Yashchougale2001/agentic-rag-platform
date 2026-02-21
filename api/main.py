@@ -12,7 +12,7 @@ from src.utils.config_loader import ensure_directories
 setup_logging()
 logger = logging.getLogger(__name__)
 
-from api.routes import query, ingest  # noqa: E402  (import after logging is set up)
+from api.routes import query, ingest, feedback  # noqa: E402
 
 
 app = FastAPI(
@@ -26,6 +26,7 @@ ensure_directories()
 # Register routers
 app.include_router(query.router)
 app.include_router(ingest.router)
+app.include_router(feedback.router)
 
 
 @app.get("/")
